@@ -1,0 +1,21 @@
+
+testnet-test/
+├── config1.toml
+├── config2.toml
+├── config3.toml
+├── genesis.json
+├── nodekey1
+├── nodekey2
+└── nodekey3
+
+## make genesis block
+
+go run . --datadir /Users/oho-eun/testnet-test/node1 init /Users/oho-eun/testnet-test/genesis.json
+go run . --datadir /Users/oho-eun/testnet-test/node2 init /Users/oho-eun/testnet-test/genesis.json
+go run . --datadir /Users/oho-eun/testnet-test/node3 init /Users/oho-eun/testnet-test/genesis.json
+
+## run node
+
+go run . -config=/Users/oho-eun/testnet-test/config1.toml -nodekey=/Users/oho-eun/testnet-test/nodekey1 --authrpc.port=8561 -verbosity=2 console -mine
+go run . -config=/Users/oho-eun/testnet-test/config2.toml -nodekey=/Users/oho-eun/testnet-test/nodekey2 --authrpc.port=8562 -verbosity=2 console -mine
+go run . -config=/Users/oho-eun/testnet-test/config3.toml -nodekey=/Users/oho-eun/testnet-test/nodekey3 --authrpc.port=8563 -verbosity=2 console -mine
